@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:super_vicky/domain/entities/product_model.dart';
 
+
+
+///
 class ProductListState extends ChangeNotifier {
   final _items = <ProductModel>[
     ProductModel(
@@ -9,23 +12,23 @@ class ProductListState extends ChangeNotifier {
       code: 'code',
       quantity: 2,
       value: 123,
-      totalValue: 65125,
-    ),   ProductModel(
+    ),
+    ProductModel(
       date: DateTime.now(),
       model: 'model',
       code: 'code',
       quantity: 2,
       value: 123,
-      totalValue: 65125,
-    ),   ProductModel(
+    ),
+    ProductModel(
       date: DateTime.now(),
       model: 'model',
       code: 'code',
       quantity: 2,
       value: 123,
-      totalValue: 65125,
     ),
   ];
 
+  /// Registered items on return [_items]
   List<ProductModel> get items => _items;
 }

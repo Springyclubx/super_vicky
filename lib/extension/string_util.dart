@@ -1,3 +1,4 @@
+/// Class String extension on String
 extension StringExtension on String {
   /// Results this string with the first char uppercased
   ///

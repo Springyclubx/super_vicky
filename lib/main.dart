@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'domain/constants/route_default.dart';
 import 'generated/l10n.dart';
+import 'infrastructure/presentation/constants/color_default_constants.dart';
 import 'infrastructure/presentation/screens/main_screen/main_screen.dart';
-import 'infrastructure/presentation/util/constants/color_default_constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'infrastructure/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,10 +14,13 @@ void main() {
   runApp(const HomePage());
 }
 
+/// Colors default on program
 late final ColorDefaultConstants colorDefault;
 bool _isColorDefaultInitialized = false;
 
+/// Widget with configurations application include [MaterialApp]
 class HomePage extends StatelessWidget {
+  /// Default constructor
   const HomePage({super.key});
 
   @override
@@ -27,6 +33,8 @@ class HomePage extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: routes(),
+      initialRoute: RouteDefault.mainScreen,
       supportedLocales: const [
         Locale.fromSubtags(languageCode: 'en'),
         Locale.fromSubtags(languageCode: 'pt'),
@@ -37,7 +45,6 @@ class HomePage extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         S.delegate,
-
       ],
       theme: ThemeData(
         dividerTheme: DividerThemeData(color: colorDefault.offColor),
@@ -107,7 +114,9 @@ class HomePage extends StatelessWidget {
             color: colorDefault.offColor,
           ),
         ),
-        iconTheme: IconThemeData(color: colorDefault.offColor),
+        iconTheme: IconThemeData(
+          color: colorDefault.offColor,
+        ),
         listTileTheme: ListTileThemeData(iconColor: colorDefault.offColor),
         expansionTileTheme: ExpansionTileThemeData(
           iconColor: colorDefault.offColor,
@@ -115,7 +124,7 @@ class HomePage extends StatelessWidget {
         ),
         iconButtonTheme: IconButtonThemeData(
           style: ButtonStyle(
-            iconColor: WidgetStatePropertyAll(colorDefault.offColor),
+            iconColor: WidgetStatePropertyAll<Color>(colorDefault.offColor),
           ),
         ),
 
@@ -125,7 +134,7 @@ class HomePage extends StatelessWidget {
         ),
         appBarTheme: AppBarTheme(backgroundColor: colorDefault.mainColor),
       ),
-      home: MainScreen(),
+      home: const MainScreen(),
     );
   }
 

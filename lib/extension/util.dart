@@ -1,6 +1,8 @@
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
+/// Try to parse the provided date as string with the provided format template.
+/// Returns null if the date can't be parsed
 DateTime? tryParseDate(String template, String? date) {
   if (date == null || date.isEmpty) {
     return null;
@@ -9,7 +11,9 @@ DateTime? tryParseDate(String template, String? date) {
   try {
     return DateFormat(template).parseStrict(date);
   } on FormatException catch (e, stack) {
-    logFailString('Error parsing date $e, stask: $stack');
+    logFailString(
+      'Error parsing date $date with template $template: $e, stack: $stack',
+    );
     return null;
   }
 }
@@ -24,15 +28,16 @@ String? tryFormatDate(String template, DateTime? date) {
   try {
     return DateFormat(template).format(date);
   } on FormatException catch (e, stack) {
-    logFailString('Error formatting date $e stack: $stack');
+    logFailString(
+      'Error formatting date "$date" with template "$template": $e, stack: $stack',
+    );
     return null;
   }
 }
 
+final _logger = Logger(
+  printer: SimplePrinter(printTime: true, colors: true),
+);
+
 /// Print a fail request message
-void logFailString(String messageError) {
-  Logger(
-    output: ConsoleOutput(),
-    printer: SimplePrinter(printTime: true, colors: true),
-  ).e(messageError);
-}
+void logFailString(String messageError) => _logger.e(messageError);
