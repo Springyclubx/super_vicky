@@ -11,6 +11,8 @@ class TextFormDefault extends StatelessWidget {
     this.suffixIcon,
     required this.controller,
     this.onFieldSubmitted,
+    this.onChanged,
+    this.enabled,
     this.inputFormatters,
   });
 
@@ -26,15 +28,23 @@ class TextFormDefault extends StatelessWidget {
   /// Execution method when pressing enter
   final ValueChanged<String>? onFieldSubmitted;
 
+  /// Execution method when changing value
+  final ValueChanged<String>? onChanged;
+
   /// List format of input
   final List<TextInputFormatter>? inputFormatters;
+
+  /// enabled text form
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       inputFormatters: inputFormatters,
       controller: controller,
       onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
       style: TextStyle(
         fontFamily: 'inter',
         color: colorDefault.offColor,

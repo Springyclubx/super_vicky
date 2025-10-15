@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:super_vicky/domain/constants/format_date_constants.dart';
 import 'package:super_vicky/infrastructure/presentation/states/form_data_state.dart';
+import 'package:super_vicky/infrastructure/util/formatters/input_format/currency_input_formatter.dart';
+import 'package:super_vicky/infrastructure/util/formatters/input_format/hour_input_formatter.dart';
 
 import '../../../../extension/util.dart';
 import '../../../util/exports_widget.dart';
@@ -43,17 +46,66 @@ class _Body extends StatelessWidget {
               child: const Column(
                 spacing: 8,
                 children: [
-                  _TextFormDate(),
-                  _TextFormModel(),
-                  _TextFormCode(),
-                  _TextFormQuantity(),
-                  _TextFormValue(),
+                  _RowItem(
+                    children: [
+                      _TextFormHour(),
+                      _TextFormDate(),
+                    ],
+                  ),
+                  _RowItem(
+                    children: [
+                      _TextFormModel(),
+                      _TextFormCode(),
+                    ],
+                  ),
+
+                  _RowItem(
+                    children: [
+                      _TextFormQuantity(),
+                      _TextFormValue(),
+                    ],
+                  ),
+                  _TextFormTotalValue(),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _RowItem extends StatelessWidget {
+  const _RowItem({required this.children});
+
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: 8,
+      children: [
+        for (final item in children)
+          Expanded(
+            child: item,
+          ),
+      ],
+    );
+  }
+}
+
+class _TextFormHour extends StatelessWidget {
+  const _TextFormHour();
+
+  @override
+  Widget build(BuildContext context) {
+    final state = Provider.of<FormDataState>(context);
+
+    return TextFormDefault(
+      hintText: 'Hora',
+      controller: state.hourController,
+      inputFormatters: [HourInputFormatter()],
     );
   }
 }
@@ -139,6 +191,8 @@ class _TextFormQuantity extends StatelessWidget {
     return TextFormDefault(
       hintText: 'Quantidade',
       controller: state.quantityController,
+      onChanged: (value) => state.reload(),
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
     );
   }
 }
@@ -153,6 +207,24 @@ class _TextFormValue extends StatelessWidget {
     return TextFormDefault(
       hintText: 'Valor',
       controller: state.valueController,
+      onChanged: (value) => state.reload(),
+      inputFormatters: [CurrencyTextInputFormatter()],
+    );
+  }
+}
+
+class _TextFormTotalValue extends StatelessWidget {
+  const _TextFormTotalValue();
+
+  @override
+  Widget build(BuildContext context) {
+    final state = Provider.of<FormDataState>(context);
+
+    return TextFormDefault(
+      hintText: 'Valor total (Quantidade * Valor)',
+      controller: state.totalValueController,
+      enabled: false,
+      inputFormatters: [CurrencyTextInputFormatter()],
     );
   }
 }
