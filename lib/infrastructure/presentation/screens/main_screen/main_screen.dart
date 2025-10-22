@@ -5,6 +5,7 @@ import 'package:super_vicky/extension/string_util.dart';
 import 'package:super_vicky/infrastructure/presentation/states/product_list_state.dart';
 
 import '../../../../domain/constants/route_default.dart';
+import '../../../../domain/entities/close_products_model.dart';
 import '../../../../extension/util.dart';
 import '../../../../main.dart';
 import '../../../util/exports_widget.dart';

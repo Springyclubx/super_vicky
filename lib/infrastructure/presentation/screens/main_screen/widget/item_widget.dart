@@ -3,6 +3,29 @@ part of '../main_screen.dart';
 class _ItemWidget extends StatelessWidget {
   const _ItemWidget({required this.item});
 
+  final CloseProductsModel item;
+
+  @override
+  Widget build(BuildContext context) {
+    final cardContainer = colorDefault.offColor;
+
+    return ExpansionTile(
+      collapsedBackgroundColor: cardContainer,
+      backgroundColor: cardContainer,
+      title: Text(item.title),
+      children: [
+        for (final item in item.items)
+          _ItemWidget2(
+            item: item,
+          ),
+      ],
+    );
+  }
+}
+
+class _ItemWidget2 extends StatelessWidget {
+  const _ItemWidget2({required this.item});
+
   final ProductModel item;
 
   @override
