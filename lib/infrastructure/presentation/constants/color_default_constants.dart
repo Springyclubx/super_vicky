@@ -33,7 +33,7 @@ class ColorDefaultConstants {
   static const Color mainColorLight = Color(0xFFFA8072);
 
   /// Light theme background color (light pink).
-  static const Color backGroundColorLight = Color(0xFFFFE3DD);
+  static const Color backGroundColorLight = Color(0xFFF1E6FF);
 
   /// Light theme secondary color (soft purple).
   static const Color secondColorLight = Color(0xFFA787E1);
@@ -47,9 +47,7 @@ class ColorDefaultConstants {
   ); // A darker reddish tone.
 
   /// Dark theme background color (dark standard background).
-  static const Color backGroundColorDark = Color(
-    0xFF0C0A0A,
-  ); // Dark background.
+  static const Color backGroundColorDark = Color(0xFF2C1F3A);
 
   /// Dark theme secondary color (muted lavender).
   static const Color secondColorDark = Color(

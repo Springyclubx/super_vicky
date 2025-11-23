@@ -7,12 +7,15 @@ class _ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cardContainer = colorDefault.offColor;
+    final cardContainer = colorDefault.mainColor;
 
     return ExpansionTile(
       collapsedBackgroundColor: cardContainer,
       backgroundColor: cardContainer,
-      title: Text(item.title),
+      title: Text(
+        item.title,
+        style: Theme.of(context).textTheme.bodyLarge,
+      ),
       children: [
         for (final item in item.items)
           _ItemWidget2(

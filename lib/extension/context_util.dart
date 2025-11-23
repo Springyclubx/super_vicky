@@ -11,6 +11,8 @@ extension BuildContextExtension on BuildContext {
 
   /// Validates if the program has a dark theme
   bool get isDarkTheme {
+
+
     return Theme.brightnessOf(this) == Brightness.dark;
   }
 }
