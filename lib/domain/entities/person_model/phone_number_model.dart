@@ -7,4 +7,16 @@ class PhoneNumberModel {
 
   /// Phone number of contact
   final String phoneNumber;
+
+  static PhoneNumberModel fromJson(Map<String, dynamic> json) {
+    return PhoneNumberModel(
+      phoneNumber: json['phoneNumber'] ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'phoneNumber': phoneNumber,
+    };
+  }
 }

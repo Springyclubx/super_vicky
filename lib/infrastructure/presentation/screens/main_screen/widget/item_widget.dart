@@ -37,7 +37,10 @@ class _ItemWidget2 extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(RouteDefault.formScreen);
+        Navigator.of(context).pushNamed(
+          RouteDefault.formScreen,
+          arguments: item.toJson(),
+        );
       },
       child: Container(
         color: cardContainer.withValues(alpha: 0.8),

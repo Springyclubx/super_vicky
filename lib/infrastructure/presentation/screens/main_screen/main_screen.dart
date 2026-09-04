@@ -9,6 +9,7 @@ import '../../../../domain/entities/close_products_model.dart';
 import '../../../../extension/util.dart';
 import '../../../../main.dart';
 import '../../../util/exports_widget.dart';
+import '../../states/auth_state.dart';
 import '../../states/login_state.dart';
 import '../login_screen/login_screen.dart';
 
@@ -23,18 +24,24 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AuthProvider(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Consumer<AuthProvider>(
-          builder: (context, auth, _) {
-            if (auth.user != null) {
-              return const _ListProducts();
-            }
-            return const LoginScreen();
-          },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => AuthProvider(
+            authRepository: FirebaseAuthRepository(),
+          ),
         ),
+        ChangeNotifierProvider(
+          create: (_) => ProductListState(),
+        ),
+      ],
+      child: Consumer<AuthProvider>(
+        builder: (context, auth, _) {
+          // if (auth.user != null) {
+          //   return const _ListProducts();
+          // }
+          return const LoginScreen();
+        },
       ),
     );
   }

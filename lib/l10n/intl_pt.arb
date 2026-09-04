@@ -1,1 +1,21 @@
-{}
+{
+  "@@locale": "pt",
+  "loginTitle": "Bem-vindo de volta",
+  "loginSubtitle": "Entre para continuar",
+  "emailLabel": "E-mail",
+  "passwordLabel": "Senha",
+  "showPassword": "Mostrar senha",
+  "hidePassword": "Ocultar senha",
+  "loginButton": "Entrar",
+  "validationEmailRequired": "Digite seu e-mail",
+  "validationEmailInvalid": "Digite um e-mail válido",
+  "validationPasswordRequired": "Digite sua senha",
+  "authInvalidEmail": "O endereço de e-mail não é válido.",
+  "authInvalidCredentials": "E-mail ou senha incorretos.",
+  "authUserDisabled": "Esta conta foi desativada.",
+  "authTooManyRequests": "Muitas tentativas. Tente novamente mais tarde.",
+  "authNetworkUnavailable": "Sem conexão com a internet. Verifique sua rede e tente novamente.",
+  "authOperationNotAllowed": "O login por e-mail e senha não está habilitado.",
+  "authConfigurationError": "O login está temporariamente indisponível. Tente novamente mais tarde.",
+  "authUnknown": "Algo deu errado. Tente novamente."
+}

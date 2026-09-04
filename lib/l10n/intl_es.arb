@@ -1,1 +1,21 @@
-{}
+{
+  "@@locale": "es",
+  "loginTitle": "Bienvenido de nuevo",
+  "loginSubtitle": "Inicia sesión para continuar",
+  "emailLabel": "Correo electrónico",
+  "passwordLabel": "Contraseña",
+  "showPassword": "Mostrar contraseña",
+  "hidePassword": "Ocultar contraseña",
+  "loginButton": "Iniciar sesión",
+  "validationEmailRequired": "Introduce tu correo electrónico",
+  "validationEmailInvalid": "Introduce un correo electrónico válido",
+  "validationPasswordRequired": "Introduce tu contraseña",
+  "authInvalidEmail": "La dirección de correo electrónico no es válida.",
+  "authInvalidCredentials": "Correo electrónico o contraseña incorrectos.",
+  "authUserDisabled": "Esta cuenta ha sido deshabilitada.",
+  "authTooManyRequests": "Demasiados intentos. Inténtalo de nuevo más tarde.",
+  "authNetworkUnavailable": "Sin conexión a internet. Comprueba tu red e inténtalo de nuevo.",
+  "authOperationNotAllowed": "El inicio de sesión con correo y contraseña no está habilitado.",
+  "authConfigurationError": "El inicio de sesión no está disponible temporalmente. Inténtalo de nuevo más tarde.",
+  "authUnknown": "Algo salió mal. Inténtalo de nuevo."
+}

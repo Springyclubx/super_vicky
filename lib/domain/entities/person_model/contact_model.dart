@@ -9,4 +9,18 @@ class ContactModel {
 
   /// Phone number of contact
   final PhoneNumberModel phoneNumber;
+
+  static ContactModel fromJson(Map<String, dynamic> json) {
+    return ContactModel(
+      phoneNumber: PhoneNumberModel.fromJson(
+        json['phoneNumber'],
+      ),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'phoneNumber': phoneNumber.toJson(),
+    };
+  }
 }

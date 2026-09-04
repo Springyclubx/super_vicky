@@ -16,4 +16,18 @@ class PersonModel {
 
   /// Contact of person
   final ContactModel contact;
+
+  Map<String, dynamic> toJson() {
+    return {
+      'personName': personName.toJson(),
+      'contact': contact.toJson(),
+    };
+  }
+
+  factory PersonModel.fromJson(Map<String, dynamic> json) {
+    return PersonModel(
+      personName: PersonNameModel.fromJson(json['personName'] as Map<String, dynamic>),
+      contact: ContactModel.fromJson(json['contact'] as Map<String, dynamic>),
+    );
+  }
 }

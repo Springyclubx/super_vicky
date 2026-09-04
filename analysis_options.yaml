@@ -1,5 +1,19 @@
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  exclude:
+    # Machine-generated localization code (Flutter Intl / intl_utils output).
+    # Not hand-maintained, so it is excluded from lint rules such as
+    # public_member_api_docs rather than being edited by hand.
+    - lib/generated/**
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+
 linter:
   rules:
     - public_member_api_docs

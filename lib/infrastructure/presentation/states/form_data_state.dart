@@ -4,14 +4,20 @@ import 'package:super_vicky/infrastructure/util/exports_widget.dart';
 import 'package:super_vicky/infrastructure/util/formatters/parse/extractor_number_per_string_parse.dart';
 
 import '../../../domain/constants/format_date_constants.dart';
+import '../../../domain/entities/product_model.dart';
 import '../constants/text_constants.dart';
 
 /// Controller state of Form data of application
 class FormDataState extends ChangeNotifier {
   /// Constructor for init
-  FormDataState() {
+  FormDataState({
+    ProductModel? item,
+  }) : _item = item {
     _init();
   }
+
+  /// Item default for edit
+  ProductModel? _item;
 
   final _modelController = TextEditingController();
   final _dateController = TextEditingController();
@@ -43,6 +49,28 @@ class FormDataState extends ChangeNotifier {
   TextEditingController get valueController => _valueController;
 
   Future<void> _init() async {
+    if (_item != null) {
+      _populateEdit();
+      return;
+    }
+
+    _populateDefault();
+  }
+
+  void _populateEdit() {
+    final validateItem = _item!;
+
+    _modelController.text = validateItem.model;
+    _dateController.text = validateItem.createdDate ?? '';
+    _hourController.text = validateItem.createdHour ?? '';
+    _codeController.text = validateItem.code;
+    _quantityController.text = validateItem.quantity.toString();
+    _valueController.text = validateItem.value.toString();
+    _totalValueController.text = validateItem.totalValue.toString();
+    notifyListeners();
+  }
+
+  void _populateDefault() {
     final now = DateTime.now();
 
     _dateController.text = tryFormatDate(FormatDate.dateMonthYear, now) ?? '';

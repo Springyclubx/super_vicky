@@ -5,4 +5,7 @@ class FormatDate {
 
   /// Default format hour minute or (HH:mm)
   static const hourMinute = 'HH:mm';
+
+  /// Formatted date `HH:dd`
+  static const String dateHourMinute = 'HH:dd';
 }

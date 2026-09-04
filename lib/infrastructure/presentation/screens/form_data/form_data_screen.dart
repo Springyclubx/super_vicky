@@ -6,18 +6,25 @@ import 'package:super_vicky/infrastructure/presentation/states/form_data_state.d
 import 'package:super_vicky/infrastructure/util/formatters/input_format/currency_input_formatter.dart';
 import 'package:super_vicky/infrastructure/util/formatters/input_format/hour_input_formatter.dart';
 
+import '../../../../domain/entities/product_model.dart';
 import '../../../../extension/util.dart';
 import '../../../util/exports_widget.dart';
 
 /// Screen of register new item
 class RegisterScreen extends StatelessWidget {
   /// Default constructor
-  const RegisterScreen({super.key});
+  const RegisterScreen({
+    super.key,
+    required this.item,
+  });
+
+  /// Item default for return edit screen or register
+  final ProductModel? item;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => FormDataState(),
+      create: (context) => FormDataState(item: item),
       child: Scaffold(
         appBar: appBarDefault(context: context, title: 'Registro'),
         body: const _Body(),

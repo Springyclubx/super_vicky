@@ -7,4 +7,16 @@ class PersonNameModel {
 
   /// Just name of person
   final String personName;
+
+  static PersonNameModel fromJson(Map<String, dynamic> json) {
+    return PersonNameModel(
+      personName: json['personName'] ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'personName': personName,
+    };
+  }
 }

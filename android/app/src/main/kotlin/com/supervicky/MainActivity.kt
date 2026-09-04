@@ -1,4 +1,4 @@
-package com.example.super_vicky
+package com.supervicky
 
 import io.flutter.embedding.android.FlutterActivity
 

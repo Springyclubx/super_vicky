@@ -44,7 +44,6 @@ class FormattedNumber {
     return value;
   }
 
-
   /// Private method to format the numeric value into a formatted string (e.g., "R$ 1.234,56").
   ///
   /// This method uses the `intl` package to format the numeric value as a currency value.
